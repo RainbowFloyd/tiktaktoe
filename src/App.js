@@ -5,7 +5,7 @@ function App() {
   return (
     //adding tiktaktoe board
     //will move html when board is complete
-    <div>
+    <div className="container">
       <Board />
     </div>
   );

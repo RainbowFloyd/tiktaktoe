@@ -1,19 +1,5 @@
-.board {
-  margin: 0 auto;
-  width: 50%;
-  padding-bottom: 50%;
-  border: 5px solid red;
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.boardLine {
-
-}
-
-/*td {
-border: 1px solid black;
-height: 50px;
-width: 50px;
-}*/
