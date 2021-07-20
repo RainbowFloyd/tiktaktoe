@@ -1,13 +1,12 @@
 import './App.css';
+import Board from './components/Board';
 
 function App() {
   return (
     //adding tiktaktoe board
     //will move html when board is complete
     <div>
-      <div className="board">
-        <div className="boardLine"></div>
-      </div>
+      <Board />
     </div>
   );
 }
