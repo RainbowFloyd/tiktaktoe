@@ -7,33 +7,35 @@ function Board () {
     for (let row = 0; row < boardSize; row++) {
       let temp = []
       for (let column = 0; column < boardSize; column++) {
+        let style = null;
         //Top left corner
         if (row === 0 && column === 0) {
-          temp.push(<td className="topLeft"></td>);
+          style = "topLeft"
           //Top right corner
         } else if (row === 0 && column === boardSize - 1) {
-          temp.push(<td className="topRight"></td>);
+          style = "topRight"
           //Bottom left corner
         } else if (row === boardSize - 1 && column === 0) {
-          temp.push(<td className="bottomLeft"></td>)
+          style = "bottomLeft"
           //Bottom right corner
         } else if (row === boardSize - 1 && column === boardSize - 1) {
-          temp.push(<td className="bottomRight"></td>)
+          style = "bottomRight"
           //Top row
         } else if (row === 0 && (column > 0 && column < boardSize - 1)) {
-          temp.push(<td className="topRow"></td>)
+          style = "topRow"
           //First column
         } else if (column === 0 && (row > 0 && row < boardSize - 1)) {
-          temp.push(<td className="firstColumn"></td>)
+          style = "firstColumn"
           //Bottom Row
         } else if (row === boardSize - 1 && (column > 0 && column < boardSize - 1)) {
-          temp.push(<td className="bottomRow"></td>)
+          style = "bottomRow"
           //Last column
         } else if (column === boardSize - 1 && (row > 0 && row < boardSize - 1)) {
-          temp.push(<td className="lastColumn"></td>)
+          style = "lastColumn"
         } else {
-          temp.push(<td className="middle"></td>)
+          style = "middle"
         }
+        temp.push(<td className={style}></td>);
       }
       board.push(<tr>{temp}</tr>)
     }
