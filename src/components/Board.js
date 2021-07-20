@@ -8,6 +8,7 @@ function Board () {
       let temp = []
       for (let column = 0; column < boardSize; column++) {
         let style = null;
+        let key = row.toString() + column.toString()
         //Top left corner
         if (row === 0 && column === 0) {
           style = "topLeft"
@@ -35,9 +36,9 @@ function Board () {
         } else {
           style = "middle"
         }
-        temp.push(<td className={style}></td>);
+        temp.push(<td key={key} className={style}></td>);
       }
-      board.push(<tr>{temp}</tr>)
+      board.push(<tr key={"row" + row.toString()}>{temp}</tr>)
     }
     return <table className="board"><tbody>{board}</tbody></table>
   }
