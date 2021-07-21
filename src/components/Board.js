@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import MainMenu from './MainMenu';
 import './Board.css';
 import XorO from './XOro';
 
 class Board extends Component {
 
     state = {
-      layout: {}
+      layout: {},
+      startGame: false
     }
 
     handleSquareClick = (squareId) => {
@@ -17,7 +19,7 @@ class Board extends Component {
 
     contructBoard = (boardSize) => {
       let board = []
-      //let boardStateLayout = {}
+      let boardStateLayout = {}
       for (let row = 0; row < boardSize; row++) {
         let temp = []
         for (let column = 0; column < boardSize; column++) {
@@ -50,8 +52,7 @@ class Board extends Component {
           } else {
             style = "middle"
           }
-          //boardStateLayout[squareId] = undefined
-          this.state.layout = boardStateLayout
+          boardStateLayout[squareId] = undefined
           temp.push(<td
             key={squareId}
             className={style}
@@ -65,15 +66,15 @@ class Board extends Component {
         }
         board.push(<tr key={"row" + row.toString()}>{temp}</tr>)
       }
-      //this.state = { layout: boardStateLayout }
+      this.setState = { layout: boardStateLayout }
       return <table className="board"><tbody>{board}</tbody></table>
     }
-    this.board = this.contructBoard(3);
+    board = this.contructBoard(3);
 
   render() {
     return (
       <div className="boardContainer">
-        {this.board}
+        {this.state.startGame ? this.board : <MainMenu />}
       </div>
     );
   }
