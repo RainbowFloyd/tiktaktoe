@@ -1,68 +1,73 @@
 import React, { Component } from 'react';
 import './Board.css';
+//import XorO from './XOro';
 
 class Board extends Component {
 
-  contructBoard = (boardSize) => {
-    let board = []
-    let boardStateLayout = {}
-    for (let row = 0; row < boardSize; row++) {
-      let temp = []
-      for (let column = 0; column < boardSize; column++) {
-        let style = null;
-        let key = row.toString() + column.toString()
-        //Top left corner
-        if (row === 0 && column === 0) {
-          style = "topLeft"
-          //Top right corner
-        } else if (row === 0 && column === boardSize - 1) {
-          style = "topRight"
-          //Bottom left corner
-        } else if (row === boardSize - 1 && column === 0) {
-          style = "bottomLeft"
-          //Bottom right corner
-        } else if (row === boardSize - 1 && column === boardSize - 1) {
-          style = "bottomRight"
-          //Top row
-        } else if (row === 0 && (column > 0 && column < boardSize - 1)) {
-          style = "topRow"
-          //First column
-        } else if (column === 0 && (row > 0 && row < boardSize - 1)) {
-          style = "firstColumn"
-          //Bottom Row
-        } else if (row === boardSize - 1 && (column > 0 && column < boardSize - 1)) {
-          style = "bottomRow"
-          //Last column
-        } else if (column === boardSize - 1 && (row > 0 && row < boardSize - 1)) {
-          style = "lastColumn"
-        } else {
-          style = "middle"
-        }
-        temp.push(<td key={key} onClick={this.handleSquareClick} className={style}></td>);
-        boardStateLayout[key] = {
-          showEl: false,
-          el: "x"
-        }
-      }
-      board.push(<tr key={"row" + row.toString()}>{temp}</tr>)
+  constructor(props) {
+    super(props)
+    this.state = {
+      layout: null
     }
-    return <table className="board"><tbody>{board}</tbody></table>
+    this.contructBoard = (boardSize) => {
+      let board = []
+      let boardStateLayout = {}
+      for (let row = 0; row < boardSize; row++) {
+        let temp = []
+        for (let column = 0; column < boardSize; column++) {
+          let style = null;
+          let key = row.toString() + column.toString()
+          //Top left corner
+          if (row === 0 && column === 0) {
+            style = "topLeft"
+            //Top right corner
+          } else if (row === 0 && column === boardSize - 1) {
+            style = "topRight"
+            //Bottom left corner
+          } else if (row === boardSize - 1 && column === 0) {
+            style = "bottomLeft"
+            //Bottom right corner
+          } else if (row === boardSize - 1 && column === boardSize - 1) {
+            style = "bottomRight"
+            //Top row
+          } else if (row === 0 && (column > 0 && column < boardSize - 1)) {
+            style = "topRow"
+            //First column
+          } else if (column === 0 && (row > 0 && row < boardSize - 1)) {
+            style = "firstColumn"
+            //Bottom Row
+          } else if (row === boardSize - 1 && (column > 0 && column < boardSize - 1)) {
+            style = "bottomRow"
+            //Last column
+          } else if (column === boardSize - 1 && (row > 0 && row < boardSize - 1)) {
+            style = "lastColumn"
+          } else {
+            style = "middle"
+          }
+          temp.push(<td key={key} onClick={this.handleSquareClick} className={style}></td>);
+          boardStateLayout[key] = {
+            showEl: false,
+            el: "x"
+          }
+        }
+        board.push(<tr key={"row" + row.toString()}>{temp}</tr>)
+      }
+      this.state = { layout: boardStateLayout }
+      return <table className="board"><tbody>{board}</tbody></table>
+    }
+    this.board = this.contructBoard(3);
   }
-
-  handleSquareClick = (event) => {
-
-  }
-
-  board = this.contructBoard(3);
-
   render() {
     return (
       <div className="boardContainer">
           {this.board}
-          <p>test</p>
+{/*          <XorO layout={this.state.layout} />*/}
       </div>
     );
   }
 }
 
+  // handleSquareClick = (event) => {
+
+  // }
 export default Board;
