@@ -1,8 +1,9 @@
+import React, { Component } from 'react';
 import './Board.css';
 
-function Board () {
+class Board extends Component {
 
-  let contructBoard = (boardSize) => {
+  contructBoard = (boardSize) => {
     let board = []
     let boardStateLayout = {}
     for (let row = 0; row < boardSize; row++) {
@@ -37,10 +38,10 @@ function Board () {
         } else {
           style = "middle"
         }
-        temp.push(<td key={key} onClick={handleSquareClick} className={style}></td>);
+        temp.push(<td key={key} onClick={this.handleSquareClick} className={style}></td>);
         boardStateLayout[key] = {
           showEl: false,
-          el: null
+          el: "x"
         }
       }
       board.push(<tr key={"row" + row.toString()}>{temp}</tr>)
@@ -48,17 +49,20 @@ function Board () {
     return <table className="board"><tbody>{board}</tbody></table>
   }
 
-  const handleSquareClick = (event) => {
+  handleSquareClick = (event) => {
 
   }
 
-  const board = contructBoard(3);
+  board = this.contructBoard(3);
 
-  return (
-    <div className="boardContainer">
-        {board}
-    </div>
-  );
+  render() {
+    return (
+      <div className="boardContainer">
+          {this.board}
+          <p>test</p>
+      </div>
+    );
+  }
 }
 
 export default Board;
