@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
 import './Board.css';
-//import XorO from './XOro';
+import XorO from './XOro';
 
 class Board extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      layout: null
+    state = {
+      layout: {}
     }
-    this.contructBoard = (boardSize) => {
+
+    handleSquareClick = (squareId) => {
+      console.log(squareId);
+      let stateLayoutCopy = {...this.state.layout}
+      stateLayoutCopy[squareId] = 'X'
+      this.setState({layout: stateLayoutCopy}, () => console.log('state updated'))
+    }
+
+    contructBoard = (boardSize) => {
       let board = []
-      let boardStateLayout = {}
+      //let boardStateLayout = {}
       for (let row = 0; row < boardSize; row++) {
         let temp = []
         for (let column = 0; column < boardSize; column++) {
           let style = null;
-          let key = row.toString() + column.toString()
+          let squareId = row.toString() + column.toString()
           //Top left corner
           if (row === 0 && column === 0) {
             style = "topLeft"
@@ -44,30 +50,33 @@ class Board extends Component {
           } else {
             style = "middle"
           }
-          temp.push(<td key={key} onClick={this.handleSquareClick} className={style}></td>);
-          boardStateLayout[key] = {
-            showEl: false,
-            el: "x"
-          }
+          //boardStateLayout[squareId] = undefined
+          this.state.layout = boardStateLayout
+          temp.push(<td
+            key={squareId}
+            className={style}
+            onClick={() => this.handleSquareClick(squareId)}
+            >
+              <XorO
+                test={squareId}
+                el={this.state.layout[squareId]}
+              />
+            </td>);
         }
         board.push(<tr key={"row" + row.toString()}>{temp}</tr>)
       }
-      this.state = { layout: boardStateLayout }
+      //this.state = { layout: boardStateLayout }
       return <table className="board"><tbody>{board}</tbody></table>
     }
     this.board = this.contructBoard(3);
-  }
+
   render() {
     return (
       <div className="boardContainer">
-          {this.board}
-{/*          <XorO layout={this.state.layout} />*/}
+        {this.board}
       </div>
     );
   }
 }
 
-  // handleSquareClick = (event) => {
-
-  // }
 export default Board;
