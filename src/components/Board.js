@@ -4,6 +4,7 @@ function Board () {
 
   let contructBoard = (boardSize) => {
     let board = []
+    let boardStateLayout = {}
     for (let row = 0; row < boardSize; row++) {
       let temp = []
       for (let column = 0; column < boardSize; column++) {
@@ -36,11 +37,19 @@ function Board () {
         } else {
           style = "middle"
         }
-        temp.push(<td key={key} className={style}></td>);
+        temp.push(<td key={key} onClick={handleSquareClick} className={style}></td>);
+        boardStateLayout[key] = {
+          showEl: false,
+          el: null
+        }
       }
       board.push(<tr key={"row" + row.toString()}>{temp}</tr>)
     }
     return <table className="board"><tbody>{board}</tbody></table>
+  }
+
+  const handleSquareClick = (event) => {
+
   }
 
   const board = contructBoard(3);
