@@ -1,14 +1,15 @@
+import React, { Component } from 'react';
 import './App.css';
 import Board from './components/Board';
 
-function App() {
-  return (
-    //adding tiktaktoe board
-    //will move html when board is complete
-    <div className="container">
-      <Board />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="container">
+        <Board />
+      </div>
+    );
+  }
 }
 
 export default App;
