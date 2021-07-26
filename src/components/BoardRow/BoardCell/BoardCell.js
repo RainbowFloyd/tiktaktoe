@@ -31,8 +31,13 @@ const BoardCell = (props) => {
   } else {
     style = "middle"
   }
+
+  const handleCellClick = () => {
+    console.log(`${row}${column}`)
+  }
+
   return (
-    <td className={style}></td>
+    <td onClick={handleCellClick} className={style}></td>
   )
 
 }

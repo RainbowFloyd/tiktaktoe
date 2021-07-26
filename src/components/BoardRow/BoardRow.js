@@ -1,19 +1,20 @@
 import BoardCell from './BoardCell/BoardCell'
+import './BoardRow.css'
 
 const BoardRow = (props) => {
 
   const boardSize = props.boardSize
-  let row = []
+  let boardCells = []
 
   for (let column = 0; column < boardSize; column++) {
-    row.push(<tr key={`${row}${column}`}><BoardCell
+    boardCells.push(<BoardCell
       boardSize={boardSize}
       row={props.row}
-      column={column} /></tr>)
+      column={column} />)
   }
 
   return (
-    row
+    <tr>{boardCells}</tr>
   )
 
 }
