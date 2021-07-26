@@ -8,11 +8,21 @@ class Board extends Component {
   state = {
     layout: {},
     startGame: false,
+    currChar: 'x'
   }
 
+  handleCellClick = (row, column) => {
+    const cellIndex = `${row}${column}`
+    let stateLayoutCopy = {...this.state.layout}
+    if (!stateLayoutCopy[cellIndex] || stateLayoutCopy[cellIndex] === '') {
+      stateLayoutCopy[cellIndex] = this.state.currChar
+    }
+    this.setState({layout: stateLayoutCopy}, () => {
+      console.log(this.state.layout)
+    });
+  }
 
   handleStartGameClick = () => {
-    //this.initLayoutState(3);
     this.board = this.contructBoard(3);
     this.setState({startGame: true});
   }
@@ -23,7 +33,8 @@ class Board extends Component {
       boardRows.push(<BoardRow
         key={`${row}`}
         boardSize={boardSize}
-        row={row} />)
+        row={row}
+        handleCellClick={this.handleCellClick}/>)
     }
     return <table className="board"><tbody>{boardRows}</tbody></table>;
   }

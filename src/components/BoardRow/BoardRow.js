@@ -5,12 +5,14 @@ const BoardRow = (props) => {
 
   const boardSize = props.boardSize
   let boardCells = []
+  let row = props.row
 
   for (let column = 0; column < boardSize; column++) {
     boardCells.push(<BoardCell
       boardSize={boardSize}
-      row={props.row}
-      column={column} />)
+      row={row}
+      column={column}
+      handleCellClick={props.handleCellClick} />)
   }
 
   return (
