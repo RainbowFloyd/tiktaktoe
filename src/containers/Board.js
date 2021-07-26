@@ -21,9 +21,12 @@ class Board extends Component {
   contructBoard = (boardSize) => {
     let boardRows = [];
     for (let row = 0; row < boardSize; row++) {
-      boardRows.push(<BoardRow key={`${row}`} boardSize={boardSize} />)
+      boardRows.push(<BoardRow
+        key={`${row}`}
+        boardSize={boardSize}
+        row={row} />)
     }
-    return <table>{boardRows}</table>;
+    return <table className="board"><tbody>{boardRows}</tbody></table>;
   }
 
 

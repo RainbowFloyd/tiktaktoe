@@ -1,0 +1,46 @@
+/*Some classes are repetative*/
+
+.topLeft {
+  border-right: 5px solid blue;
+  border-bottom: 5px solid blue;
+}
+
+.topRight {
+  border-left: 5px solid blue;
+  border-bottom: 5px solid blue;
+}
+
+.bottomLeft {
+  border-top: 5px solid blue;
+  border-right: 5px solid blue;
+}
+
+.bottomRight {
+  border-top: 5px solid blue;
+  border-left: 5px solid blue;
+}
+
+.topRow {
+  border-bottom: 5px solid blue;
+  border-right: 5px solid blue;
+}
+
+.bottomRow {
+  border-top: 5px solid blue;
+  border-right: 5px solid blue;
+}
+
+.firstColumn {
+  border-right: 5px solid blue;
+  border-bottom: 5px solid blue;
+}
+
+.lastColumn {
+  border-left: 5px solid blue;
+  border-bottom: 5px solid blue;
+}
+
+
+.middle {
+  border: 5px solid blue;
+}
