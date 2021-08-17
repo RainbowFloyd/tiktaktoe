@@ -20,6 +20,11 @@ class Board extends Component {
     this.setState({layout: stateLayoutCopy}, () => {
       console.log(this.state.layout)
     });
+    if (this.state.currChar === 'x') {
+      this.setState({currChar: 'o'})
+    } else {
+      this.setState({currChar: 'x'})
+    }
   }
 
   handleStartGameClick = () => {
@@ -34,6 +39,7 @@ class Board extends Component {
         key={`${row}`}
         boardSize={boardSize}
         row={row}
+        currChar={this.state.currChar}
         layout={this.state.layout}
         handleCellClick={this.handleCellClick}/>)
     }

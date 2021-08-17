@@ -13,6 +13,7 @@ const BoardRow = (props) => {
       boardSize={boardSize}
       row={row}
       column={column}
+      currChar={props.currChar}
       layout={props.layout}
       handleCellClick={props.handleCellClick} />)
   }
