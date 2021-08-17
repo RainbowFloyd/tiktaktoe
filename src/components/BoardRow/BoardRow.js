@@ -9,6 +9,7 @@ const BoardRow = (props) => {
 
   for (let column = 0; column < boardSize; column++) {
     boardCells.push(<BoardCell
+      key={`${row}${column}`}
       boardSize={boardSize}
       row={row}
       column={column}
