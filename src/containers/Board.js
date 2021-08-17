@@ -34,6 +34,7 @@ class Board extends Component {
         key={`${row}`}
         boardSize={boardSize}
         row={row}
+        layout={this.state.layout}
         handleCellClick={this.handleCellClick}/>)
     }
     return <table className="board"><tbody>{boardRows}</tbody></table>;
