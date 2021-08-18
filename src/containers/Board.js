@@ -7,7 +7,7 @@ class Board extends Component {
 
   state = {
     layout: {},
-    startGame: false,
+    startGame: true,
     currChar: 'x'
   }
 
@@ -41,13 +41,13 @@ class Board extends Component {
         row={row}
         currChar={this.state.currChar}
         layout={this.state.layout}
+        handleNewCell={this.handleNewCell}
         handleCellClick={this.handleCellClick}/>)
     }
     return <table className="board"><tbody>{boardRows}</tbody></table>;
   }
 
-
-  board = null
+  board = this.contructBoard(3)
 
   render() {
     return (

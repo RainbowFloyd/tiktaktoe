@@ -33,18 +33,18 @@ const BoardCell = (props) => {
   }
 
   let output = null;
+  let cellId = `${row}${column}`
 
-  if (props.layout[`${row}${column}`] === 'x') {
-    console.log(true)
+  if (props.layout[cellId] !== undefined) {
     output = <td
     onClick={() => props.handleCellClick(row, column)}
     className={style}>{props.currChar}</td>
   } else {
-    console.log(false)
     output = <td
     onClick={() => props.handleCellClick(row, column)}
     className={style}></td>
   }
+
 
   return output
 
